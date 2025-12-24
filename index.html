@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Spin the wheel to win exciting discounts! Enter your order number and try your luck with our interactive discount spinner."
+    />
+    <link rel="icon" type="image/png" href="/image.png" />
+
+    <title>Discount Spinner - Win Amazing Discounts!</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="logo-container">
+          <img src="/image.png" alt="MOLRAXA Logo" class="logo" />
+        </div>
+        <h2 class="company-name">MOLRAXA Agro Chemicals</h2>
+        <h1>Discount scheme of SPIN and WIN</h1>
+        <p>Spin the wheel and win amazing discounts!</p>
+      </header>
+
+      <main class="main-content">
+        <!-- Input Section -->
+        <section class="input-section">
+          <div class="input-group">
+            <label for="orderNumber">Order Number</label>
+            <input
+              type="text"
+              id="orderNumber"
+              placeholder="Enter your order number..."
+              autocomplete="off"
+            />
+          </div>
+
+          <button class="spin-button" id="spinButton">
+            <span>🎯 Spin the Wheel</span>
+          </button>
+
+          <div class="result-display" id="resultDisplay">
+            <div class="discount-text" id="discountText">-</div>
+            <div class="result-label">Your Discount</div>
+          </div>
+
+          <div class="status-message" id="statusMessage"></div>
+        </section>
+
+        <!-- Spinner Section -->
+        <section class="spinner-section">
+          <div class="spinner-container">
+            <div class="spinner-arrow"></div>
+            <div class="spinner-wheel" id="spinnerWheel">
+              <div class="spinner-labels">
+                <div class="spinner-label"><span>2%</span></div>
+                <div class="spinner-label"><span>3%</span></div>
+                <div class="spinner-label"><span>5%</span></div>
+                <div class="spinner-label"><span>7%</span></div>
+                <div class="spinner-label"><span>10%</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
