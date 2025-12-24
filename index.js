@@ -15,9 +15,48 @@ const statusMessage = document.getElementById("statusMessage");
 // State
 let isSpinning = false;
 let currentRotation = 0;
+let myChart;
+
+// Chart.js colors matching original theme
+const pieColors = ["#ff6b6b", "#4ecdc4", "#45b7d1", "#f9ca24", "#6c5ce7"];
+
+// Initialize Chart.js wheel
+function initializeWheel() {
+  const data = DISCOUNT_VALUES.map(() => 1); // Equal size segments
+
+  myChart = new Chart(spinnerWheel, {
+    plugins: [ChartDataLabels],
+    type: "pie",
+    data: {
+      labels: DISCOUNT_VALUES.map((v) => `${v}%`),
+      datasets: [
+        {
+          backgroundColor: pieColors,
+          data: data,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      animation: { duration: 0 },
+      plugins: {
+        tooltip: false,
+        legend: { display: false },
+        datalabels: {
+          color: "#ffffff",
+          formatter: (_, context) =>
+            context.chart.data.labels[context.dataIndex],
+          font: { size: 24, weight: "bold" },
+        },
+      },
+    },
+  });
+}
 
 // Initialize
 document.addEventListener("DOMContentLoaded", () => {
+  initializeWheel();
   spinButton.addEventListener("click", handleSpin);
   orderNumberInput.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
@@ -50,32 +89,37 @@ async function handleSpin() {
   const randomIndex = Math.floor(Math.random() * DISCOUNT_VALUES.length);
   const selectedDiscount = DISCOUNT_VALUES[randomIndex];
 
-  // Calculate rotation
-  // We want to spin multiple times and land on the selected segment
-  const baseRotation = 1800; // 5 full rotations
-  const segmentRotation = randomIndex * SEGMENT_ANGLE;
-  const finalRotation =
-    baseRotation + (360 - segmentRotation) + SEGMENT_ANGLE / 2;
+  // Calculate the target angle for the selected segment
+  const targetAngle = randomIndex * SEGMENT_ANGLE;
+  const randomDegree = targetAngle + Math.floor(Math.random() * SEGMENT_ANGLE);
 
-  // Apply rotation
-  currentRotation += finalRotation;
-  spinnerWheel.style.transform = `rotate(${currentRotation}deg)`;
+  // Spin animation using Chart.js rotation
+  let count = 0;
+  let resultValue = 101;
+  const baseRotations = 1800; // 5 full rotations
+  const finalRotation = baseRotations + randomDegree;
 
-  // Wait for spin animation to complete
-  await sleep(4000);
+  let rotationInterval = setInterval(() => {
+    myChart.options.rotation = myChart.options.rotation + resultValue;
+    myChart.update();
 
-  // Show result
-  displayResult(selectedDiscount);
+    if (myChart.options.rotation >= 360) {
+      count += 1;
+      resultValue -= 5;
+      myChart.options.rotation = 0;
+    } else if (count > 15 && myChart.options.rotation >= randomDegree % 360) {
+      clearInterval(rotationInterval);
 
-  // Save to Google Sheets
-  await saveToGoogleSheets(orderNumber, selectedDiscount);
-
-  // Create confetti effect
-  createConfetti();
-
-  // Reset state
-  isSpinning = false;
-  spinButton.disabled = false;
+      // Show result after animation
+      setTimeout(() => {
+        displayResult(selectedDiscount);
+        saveToGoogleSheets(orderNumber, selectedDiscount);
+        createConfetti();
+        isSpinning = false;
+        spinButton.disabled = false;
+      }, 500);
+    }
+  }, 10);
 }
 
 // Display the result

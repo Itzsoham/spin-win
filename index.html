@@ -7,7 +7,7 @@
       name="description"
       content="Spin the wheel to win exciting discounts! Enter your order number and try your luck with our interactive discount spinner."
     />
-    <link rel="icon" type="image/png" href="/image.png" />
+    <link rel="icon" type="image/png" href="/logo.png" />
 
     <title>Discount Spinner - Win Amazing Discounts!</title>
     <link rel="stylesheet" href="index.css" />
@@ -17,7 +17,7 @@
     <div class="container">
       <header class="header">
         <div class="logo-container">
-          <img src="/image.png" alt="MOLRAXA Logo" class="logo" />
+          <img src="/logo.png" alt="MOLRAXA Logo" class="logo" />
         </div>
         <h2 class="company-name">MOLRAXA Agro Chemicals</h2>
         <h1>Discount scheme of SPIN and WIN</h1>
@@ -52,21 +52,26 @@
         <!-- Spinner Section -->
         <section class="spinner-section">
           <div class="spinner-container">
-            <div class="spinner-arrow"></div>
-            <div class="spinner-wheel" id="spinnerWheel">
-              <div class="spinner-labels">
-                <div class="spinner-label"><span>2%</span></div>
-                <div class="spinner-label"><span>3%</span></div>
-                <div class="spinner-label"><span>5%</span></div>
-                <div class="spinner-label"><span>7%</span></div>
-                <div class="spinner-label"><span>10%</span></div>
-              </div>
-            </div>
+            <canvas id="spinnerWheel"></canvas>
+            <svg class="spinner-arrow" width="16" height="32" viewBox="0 0 50 60" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#000" flood-opacity="0.3"/>
+                </filter>
+              </defs>
+              <path d="M25 60 L8 18 L20 18 L20 0 L30 0 L30 18 L42 18 Z" 
+                    fill="#000000" 
+                    filter="url(#shadow)"/>
+            </svg>
           </div>
         </section>
       </main>
     </div>
 
+    <!-- Chart JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <!-- Chart JS Plugin for displaying text over chart -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script>
     <script src="index.js"></script>
   </body>
 </html>
