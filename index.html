@@ -53,15 +53,35 @@
         <section class="spinner-section">
           <div class="spinner-container">
             <canvas id="spinnerWheel"></canvas>
-            <svg class="spinner-arrow" width="16" height="32" viewBox="0 0 50 60" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              class="spinner-arrow"
+              width="16"
+              height="32"
+              viewBox="0 0 50 60"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <defs>
-                <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#000" flood-opacity="0.3"/>
+                <filter
+                  id="shadow"
+                  x="-50%"
+                  y="-50%"
+                  width="200%"
+                  height="200%"
+                >
+                  <feDropShadow
+                    dx="0"
+                    dy="1"
+                    stdDeviation="1.5"
+                    flood-color="#000"
+                    flood-opacity="0.3"
+                  />
                 </filter>
               </defs>
-              <path d="M25 60 L8 18 L20 18 L20 0 L30 0 L30 18 L42 18 Z" 
-                    fill="#000000" 
-                    filter="url(#shadow)"/>
+              <path
+                d="M25 60 L8 18 L20 18 L20 0 L30 0 L30 18 L42 18 Z"
+                fill="#000000"
+                filter="url(#shadow)"
+              />
             </svg>
           </div>
         </section>
