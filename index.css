@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap");
+﻿@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap");
 
 :root {
   /* Color Palette */
@@ -161,10 +161,10 @@ body::before {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  align-items: center;
+  align-items: start;
   animation: fadeInUp 0.8s ease-out 0.2s both;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1200px;
 }
 
 @keyframes fadeInUp {
@@ -180,6 +180,55 @@ body::before {
 }
 
 /* Input Section */
+.input-section {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-glow);
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 450px;
+}
+
+/* Product Section */
+.product-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.product-image-container {
+  width: 100%;
+  max-width: 200px;
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem auto;
+  transition: opacity 0.3s ease;
+}
+
+.product-image-container.move-left {
+  transform: translateX(-100px);
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 20px rgba(102, 126, 234, 0.4));
+  transition: all 0.3s ease;
+}
+
+.product-image:hover {
+  filter: drop-shadow(0 12px 30px rgba(102, 126, 234, 0.6));
+  transform: scale(1.05);
+}
+
 .input-section {
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
@@ -385,9 +434,6 @@ body::before {
   }
 }
 
-/* Status Message */
-}
-
 .spinner-label:nth-child(3) {
   transform: rotate(180deg);
 }
@@ -436,6 +482,23 @@ body::before {
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+  .main-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .product-image-container {
+    max-width: 240px;
+    height: 350px;
+  }
+
+  .spinner-container {
+    width: 280px;
+    height: 280px;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 1rem;
@@ -550,4 +613,9 @@ body::before {
     transform: translateY(100vh) rotate(360deg);
     opacity: 0;
   }
+}
+
+.product-image-container.hide {
+  opacity: 0;
+  display: none;
 }

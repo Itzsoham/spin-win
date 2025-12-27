@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,7 +7,7 @@
       name="description"
       content="Spin the wheel to win exciting discounts! Enter your order number and try your luck with our interactive discount spinner."
     />
-    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="icon" type="image/png" href="./logo.png" />
 
     <title>Discount Spinner - Win Amazing Discounts!</title>
     <link rel="stylesheet" href="index.css" />
@@ -17,7 +17,7 @@
     <div class="container">
       <header class="header">
         <div class="logo-container">
-          <img src="/logo.png" alt="MOLRAXA Logo" class="logo" />
+          <img src="./logo.png" alt="MOLRAXA Logo" class="logo" />
         </div>
         <h2 class="company-name">MOLRAXA Agro Chemicals</h2>
         <h1>Discount scheme of SPIN and WIN</h1>
@@ -25,30 +25,6 @@
       </header>
 
       <main class="main-content">
-        <!-- Input Section -->
-        <section class="input-section">
-          <div class="input-group">
-            <label for="orderNumber">Order Number</label>
-            <input
-              type="text"
-              id="orderNumber"
-              placeholder="Enter your order number..."
-              autocomplete="off"
-            />
-          </div>
-
-          <button class="spin-button" id="spinButton">
-            <span>🎯 Spin the Wheel</span>
-          </button>
-
-          <div class="result-display" id="resultDisplay">
-            <div class="discount-text" id="discountText">-</div>
-            <div class="result-label">Your Discount</div>
-          </div>
-
-          <div class="status-message" id="statusMessage"></div>
-        </section>
-
         <!-- Spinner Section -->
         <section class="spinner-section">
           <div class="spinner-container">
@@ -85,6 +61,40 @@
             </svg>
           </div>
         </section>
+
+        <!-- Input Section with Product Image -->
+        <section class="input-section">
+          <div class="input-group">
+            <label for="orderNumber">Order Number</label>
+            <input
+              type="text"
+              id="orderNumber"
+              placeholder="Enter your order number..."
+              autocomplete="off"
+            />
+          </div>
+
+          <button class="spin-button" id="spinButton">
+            <span>ðŸŽ¯ Spin the Wheel</span>
+          </button>
+
+          <!-- Product Image Section (Below Button) -->
+          <div class="product-image-container" id="productImageContainer">
+            <img
+              src="./VAZANDAR.png"
+              alt="VAZANDAR Product"
+              class="product-image"
+              id="productImage"
+            />
+          </div>
+
+          <div class="result-display" id="resultDisplay">
+            <div class="discount-text" id="discountText">-</div>
+            <div class="result-label">Your Discount</div>
+          </div>
+
+          <div class="status-message" id="statusMessage"></div>
+        </section>
       </main>
     </div>
 
@@ -95,3 +105,5 @@
     <script src="index.js"></script>
   </body>
 </html>
+
+

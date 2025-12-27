@@ -1,4 +1,4 @@
-// Configuration
+﻿// Configuration
 const GOOGLE_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbyN8LVoU_1wcrJQiQebZjw46_9X9bDoSzA7fSDFDihoCQXLK4j05Q4rEzR-G-EPWTW0/exec";
 const DISCOUNT_VALUES = [2, 3, 5, 7, 10]; // Discount percentages
@@ -11,6 +11,7 @@ const spinnerWheel = document.getElementById("spinnerWheel");
 const resultDisplay = document.getElementById("resultDisplay");
 const discountText = document.getElementById("discountText");
 const statusMessage = document.getElementById("statusMessage");
+const productImageContainer = document.getElementById("productImageContainer");
 
 // State
 let isSpinning = false;
@@ -85,6 +86,8 @@ async function handleSpin() {
   resultDisplay.classList.remove("show");
   statusMessage.classList.remove("show");
 
+  productImageContainer.classList.add("hide");
+
   // Random discount selection
   const randomIndex = Math.floor(Math.random() * DISCOUNT_VALUES.length);
   const selectedDiscount = DISCOUNT_VALUES[randomIndex];
@@ -152,7 +155,7 @@ async function saveToGoogleSheets(orderNumber, discount) {
 
     // Note: With no-cors mode, we can't read the response
     // We'll assume success if no error is thrown
-    showStatus("✅ Discount saved successfully!", "success");
+    showStatus("âœ… Discount saved successfully!", "success");
 
     // Clear input after successful save
     setTimeout(() => {
@@ -162,7 +165,7 @@ async function saveToGoogleSheets(orderNumber, discount) {
   } catch (error) {
     console.error("Error saving to Google Sheets:", error);
     showStatus(
-      "⚠️ Discount won, but failed to save. Please try again.",
+      "âš ï¸ Discount won, but failed to save. Please try again.",
       "error"
     );
   }
