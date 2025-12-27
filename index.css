@@ -32,14 +32,14 @@ body {
   font-family: "Outfit", sans-serif;
   background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
   min-height: 100vh;
-  height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  overflow: hidden;
+  align-items: flex-start;
+  overflow-x: hidden;
+  overflow-y: auto;
   position: relative;
   margin: 0;
-  padding: 0;
+  padding: 0 0 1.5rem 0;
 }
 
 /* Animated Background */
@@ -80,11 +80,11 @@ body::before {
   z-index: 1;
   width: 100%;
   max-width: 1100px;
-  height: 100vh;
+  min-height: 100vh;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   overflow-y: auto;
 }
 
@@ -352,11 +352,13 @@ body::before {
   justify-content: center;
   align-items: center;
   opacity: 0;
+  display: none;
   transform: scale(0.9);
   transition: all 0.3s ease;
 }
 
 .result-display.show {
+  display: flex;
   opacity: 1;
   transform: scale(1);
 }
@@ -461,11 +463,13 @@ body::before {
   text-align: center;
   color: var(--text-secondary);
   font-size: 0.9rem;
+  display: none;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .status-message.show {
+  display: block;
   opacity: 1;
 }
 
